@@ -6,6 +6,215 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Fonts */
+    --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Miranda Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Miranda Sans', ui-sans-serif, system-ui, sans-serif;
+
+    /* Font sizes */
+    --text-sm: 0.750rem;
+    --text-base: 1rem;
+    --text-xl: 1.333rem;
+    --text-2xl: 1.777rem;
+    --text-3xl: 2.369rem;
+    --text-4xl: 3.158rem;
+    --text-5xl: 4.210rem;
+    --text-6xl: 5.610rem;
+    --text-7xl: 7.478rem;
+    --text-8xl: 9.963rem;
+    --text-9xl: 13.279rem;
+    --text-10xl: 17.692rem;
+
+    /* Colors — base */
+    --color-text: oklch(94.72% 0.012 276.09);
+    --color-background: oklch(13.12% 0.016 276.19);
+    --color-primary: oklch(72.06% 0.089 273.85);
+    --color-secondary: oklch(35.97% 0.136 268.80);
+    --color-accent: oklch(84.97% 0.242 146.40);
+
+    /* Colors — text shades */
+    --color-text-50: oklch(95.29% 0.011 274.89);
+    --color-text-100: oklch(90.61% 0.022 277.47);
+    --color-text-200: oklch(81.24% 0.044 275.33);
+    --color-text-300: oklch(71.44% 0.071 274.45);
+    --color-text-400: oklch(61.52% 0.099 273.76);
+    --color-text-500: oklch(51.72% 0.126 271.69);
+    --color-text-600: oklch(44.12% 0.106 272.10);
+    --color-text-700: oklch(36.41% 0.084 271.93);
+    --color-text-800: oklch(28.28% 0.058 272.59);
+    --color-text-900: oklch(19.25% 0.033 274.82);
+    --color-text-950: oklch(14.68% 0.018 272.54);
+
+    /* Colors — background shades */
+    --color-background-50: oklch(95.09% 0.012 281.08);
+    --color-background-100: oklch(90.37% 0.025 278.34);
+    --color-background-200: oklch(80.39% 0.051 280.19);
+    --color-background-300: oklch(70.38% 0.079 278.43);
+    --color-background-400: oklch(60.23% 0.110 276.56);
+    --color-background-500: oklch(49.95% 0.143 274.80);
+    --color-background-600: oklch(42.84% 0.118 274.36);
+    --color-background-700: oklch(35.28% 0.093 275.02);
+    --color-background-800: oklch(27.29% 0.066 276.30);
+    --color-background-900: oklch(18.95% 0.037 275.16);
+    --color-background-950: oklch(14.37% 0.020 278.25);
+
+    /* Colors — primary shades */
+    --color-primary-50: oklch(95.08% 0.015 277.85);
+    --color-primary-100: oklch(90.04% 0.031 275.58);
+    --color-primary-200: oklch(79.93% 0.063 274.87);
+    --color-primary-300: oklch(69.72% 0.097 274.30);
+    --color-primary-400: oklch(59.47% 0.134 272.43);
+    --color-primary-500: oklch(49.70% 0.171 269.36);
+    --color-primary-600: oklch(42.36% 0.143 269.93);
+    --color-primary-700: oklch(34.91% 0.113 270.39);
+    --color-primary-800: oklch(27.08% 0.082 270.45);
+    --color-primary-900: oklch(18.65% 0.045 271.73);
+    --color-primary-950: oklch(14.18% 0.023 268.45);
+
+    /* Colors — secondary shades */
+    --color-secondary-50: oklch(94.84% 0.018 279.06);
+    --color-secondary-100: oklch(89.76% 0.035 274.96);
+    --color-secondary-200: oklch(79.39% 0.072 274.14);
+    --color-secondary-300: oklch(68.77% 0.112 273.92);
+    --color-secondary-400: oklch(58.45% 0.154 271.55);
+    --color-secondary-500: oklch(48.70% 0.196 268.29);
+    --color-secondary-600: oklch(41.62% 0.163 268.64);
+    --color-secondary-700: oklch(34.23% 0.129 269.21);
+    --color-secondary-800: oklch(26.71% 0.093 269.03);
+    --color-secondary-900: oklch(18.39% 0.052 270.48);
+    --color-secondary-950: oklch(13.79% 0.028 269.12);
+
+    /* Colors — accent shades */
+    --color-accent-50: oklch(97.54% 0.034 152.09);
+    --color-accent-100: oklch(95.18% 0.068 152.03);
+    --color-accent-200: oklch(90.93% 0.131 150.39);
+    --color-accent-300: oklch(87.71% 0.190 148.66);
+    --color-accent-400: oklch(85.43% 0.237 146.65);
+    --color-accent-500: oklch(84.07% 0.266 144.64);
+    --color-accent-600: oklch(71.06% 0.224 144.70);
+    --color-accent-700: oklch(57.42% 0.179 144.92);
+    --color-accent-800: oklch(42.92% 0.131 145.37);
+    --color-accent-900: oklch(27.37% 0.079 146.94);
+    --color-accent-950: oklch(18.38% 0.047 150.85);
+}
+
+@layer base {
+    html {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        font-family: var(--font-body);
+    }
+}
+
+@layer utilities {
+    .hero-fade {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .hero-loaded .hero-fade {
+        animation: heroFadeIn 0.6s ease forwards;
+        animation-delay: var(--delay, 0ms);
+    }
+
+    @keyframes heroFadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .ticker-track {
+        animation: ticker 30s linear infinite;
+    }
+
+    @keyframes ticker {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    .aurora-base {
+        background: linear-gradient(to bottom right,
+            oklch(from var(--color-primary) l c h / 0.4),
+            oklch(from var(--color-secondary) l c h / 0.3),
+            oklch(from var(--color-primary) l c h / 0.4)
+        );
+    }
+    .aurora-wave-1 {
+        background: radial-gradient(ellipse 800px 600px at 50% 20%,
+            oklch(from var(--color-primary) l c h / 0.3) 0%, transparent 50%);
+        animation: aurora1 8s ease-in-out infinite alternate;
+    }
+    .aurora-wave-2 {
+        background: radial-gradient(ellipse 600px 400px at 80% 30%,
+            oklch(from var(--color-secondary) l c h / 0.4) 0%, transparent 50%);
+        animation: aurora2 6s ease-in-out infinite alternate-reverse;
+    }
+    .aurora-wave-3 {
+        background: radial-gradient(ellipse 700px 500px at 20% 60%,
+            oklch(from var(--color-accent) l c h / 0.3) 0%, transparent 50%);
+        animation: aurora3 10s ease-in-out infinite alternate;
+    }
+    .aurora-wave-4 {
+        background: radial-gradient(ellipse 900px 300px at 60% 80%,
+            oklch(from var(--color-accent) l c h / 0.2) 0%, transparent 50%);
+        animation: aurora4 7s ease-in-out infinite alternate-reverse;
+    }
+    .aurora-depth {
+        background: linear-gradient(to top, oklch(0 0 0 / 0.2), transparent, oklch(0 0 0 / 0.1));
+    }
+
+    @keyframes aurora1 {
+        0%   { transform: translateX(-100px) translateY(-50px) scale(1); }
+        100% { transform: translateX(100px) translateY(-30px) scale(0.9); }
+    }
+    @keyframes aurora2 {
+        0%   { transform: translateX(80px) translateY(40px) scale(0.8); }
+        100% { transform: translateX(-80px) translateY(60px) scale(0.9); }
+    }
+    @keyframes aurora3 {
+        0%   { transform: translateX(-50px) translateY(20px) scale(1.1); }
+        100% { transform: translateX(-20px) translateY(50px) scale(1.0); }
+    }
+    @keyframes aurora4 {
+        0%   { transform: translateX(30px) translateY(-20px) scale(0.9); }
+        100% { transform: translateX(40px) translateY(-60px) scale(0.8); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-fade,
+        .hero-loaded .hero-fade {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+
+        .ticker-track {
+            animation: none;
+        }
+
+        .reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+
+        .aurora-wave-1,
+        .aurora-wave-2,
+        .aurora-wave-3,
+        .aurora-wave-4 {
+            animation: none;
+        }
+    }
 }
