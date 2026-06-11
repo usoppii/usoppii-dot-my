@@ -18,7 +18,7 @@
         {{-- Desktop nav --}}
         <div class="hidden lg:flex items-center gap-8" role="list">
 
-            @foreach ([['#about', 'About'], ['#projects', 'Projects'], ['#contact', 'Contact']] as [$href, $label])
+            @foreach ([[route('home').'#about', 'About'], [route('home').'#projects', 'Projects'], [route('home').'#contact', 'Contact']] as [$href, $label])
             <a
                 href="{{ $href }}"
                 title="{{ $label }}"
@@ -102,7 +102,7 @@
         </svg>
     </button>
 
-    @foreach ([['#about', 'About'], ['#projects', 'Projects'], ['#contact', 'Contact']] as [$href, $label])
+    @foreach ([[route('home').'#about', 'About'], [route('home').'#projects', 'Projects'], [route('home').'#contact', 'Contact']] as [$href, $label])
     <a
         @click="open = false"
         href="{{ $href }}"

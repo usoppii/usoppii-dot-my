@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>3D Print Cost Calculator</title>
+    <link rel="stylesheet" href="beercss/beer.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="beercss/beer.min.js"></script>
+    <script type="module" src="beercss/material-dynamic-colors.min.js"></script>
+</head>
+
+<body class="dark">
+
+<header class="primary">
+    <nav class="responsive">
+        <h5 class="max center-align bold">3D Print Cost Calculator</h5>
+    </nav>
+</header>
+<main class="responsive large-padding vertical-padding">
+
+<pre><strong class="primary-text">How To Use:</strong>
+1. Fill in your print details using the fields provided in the calculator.
+2. Check your slicer software (e.g., Ultimaker Cura) for extra details like filament used (grams) and exact print time to ensure accuracy.
+3. Decide how much you want to charge by setting your hourly labor rate and Profit Margin (%).
+4. Print the summary for a complete and easy-to-reference record of your costs and final price.</pre>
+
+    <div class="grid large-space">
+        <article class="s12 border large-padding" id="projDetails">
+            <h6 class="primary-text" style="margin-bottom: 0;">Project Details</h6>
+            <div class="field label large border" style="margin-block-start: 1.75rem;">
+                <input type="text" id="projectName" value="My Project">
+                <label>Project Name (Optional)</label>
+            </div>
+        </article>
+
+        <article class="s12 l6 border large-padding" id="projFilament">
+            <h6 class="primary-text" style="margin-bottom: 0;">Filament</h6>
+
+            <fieldset class="border">
+            <legend>Filament Type</legend>
+            <nav>
+                <label class="radio">
+                    <input type="radio" name="filamentType" value="PLA" checked>
+                    <span>PLA</span>
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="filamentType" value="TPU">
+                    <span>TPU</span>
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="filamentType" value="PETG">
+                    <span>PETG</span>
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="filamentType" value="ABS">
+                    <span>ABS</span>
+                </label>
+            </nav>
+            </fieldset>
+            <output style="padding-inline: 0; padding-block: 0.25rem; font-size: 0.75rem;">Select the type of filament used for this project.</output>
+
+            <div class="field label large border" style="margin-block-start: 1.75rem;">
+                <input type="number" id="filamentCost" value="45" min="0">
+                <label>Filament Cost (RM per 1kg)</label>
+                <output style="padding-inline: 0;">Enter the price you paid for a 1kg spool.</output>
+            </div>
+
+            <div class="field label large border" style="margin-block-start: 1.75rem;">
+                <input type="number" id="filamentUsed" value="50" min="0">
+                <label>Filament Used (grams)</label>
+                <output style="padding-inline: 0;">Total weight used (include supports/brim).</output>
+            </div>
+        </article>
+
+        <article class="s12 l6 border large-padding" id="projElec">
+            <h6 class="primary-text" style="margin-bottom: 0;">Printer & Electricity</h6>
+            <div class="grid medium-space" style="margin-block-start: 0;">
+                <div class="s6">
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="printTimeHours" value="1" min="0">
+                        <label>Print Time (hours)</label>
+                    </div>
+                </div>
+                <div class="s6">
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="printTimeMinutes" value="30" min="0" max="59">
+                        <label>Print Time (minutes)</label>
+                        
+                    </div>
+                </div>
+            </div>
+            <output style="padding-inline: 0; padding-block: 0.25rem; font-size: 0.75rem;">Enter the total printer running time.</output>
+
+            <div class="field label large border" style="margin-block-start: 1.75rem;">
+                <input type="number" id="printerPower" value="120" min="0">
+                <label>Avg. Printer Power (W)</label>
+                <output style="padding-inline: 0;">The average power consumption of your 3D printer.</output>
+            </div>
+
+            <div class="field label large border" style="margin-block-start: 1.75rem;">
+                <input type="number" id="electricityRate" value="0.35" step="0.01" min="0">
+                <label>Electricity Rate (per kWh)</label>
+                <output style="padding-inline: 0;">Find this value on your electricity bill. The currency symbol (RM) is for display purposes.</output>
+            </div>
+        </article>
+
+        <article class="s12 border large-padding" id="projLabor">
+            <h6 class="primary-text" style="margin-bottom: 0;">Labor & Profit</h6>
+            <div class="grid medium-space" style="margin-block-start: 0;">
+                <div class="s12 l6">
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="laborTime" value="20" min="0">
+                        <label>Hands-on Labor (minutes)</label>
+                        <output style="padding-inline: 0;">Includes prep, cleanup, packing. Based on fraction of the hourly labor cost.</output>
+                    </div>
+        
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="laborCost" value="10" step="0.01" min="0">
+                        <label>Labor Cost (RM per hour)</label>
+                        <output style="padding-inline: 0;">Base cost per hour. This will affect the labor taken in the hour.</output>
+                    </div>
+                </div>
+        
+                <div class="s12 l6">
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="machineWearCost" value="0.315" step="0.001" min="0">
+                        <label>Machine Wear Cost (RM/hr)</label>
+                        <output style="padding-inline: 0;">Covers depreciation, maintenance, parts.</output>
+                    </div>
+        
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="profitMargin" value="20" min="0">
+                        <label>Profit Margin (%)</label>
+                        <output style="padding-inline: 0;">The percentage you want to charge on top of your total production cost.</output>
+                    </div>
+
+                    <div class="field label large border" style="margin-block-start: 1.75rem;">
+                        <input type="number" id="failureBuffer" value="10" min="0">
+                        <label>Failure Buffer (%)</label>
+                        <output style="padding-inline: 0;">Spreads the cost of failed prints across good ones. ~10% for simple PLA, more for tall/support-heavy jobs.</output>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="s12 border primary-container large-padding" id="costSummary">
+            <h5 class="bold" style="margin-bottom: 1.5rem;">3D Print Cost Summary</h5>
+
+            <h6 style="">Project Name: <span id="summaryProjectName" class="bold">My Project</span></h6>
+            <p style="font-size: 1rem;">Material: <span class="bold" id="summaryFilamentType">PLA</span></p>
+
+            <hr style="margin-block: 1.25rem; background-color: var(--primary);">
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 1.25rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>texture</i> Filament Cost:</div><span class="bold" id="resultFilament">RM 0.00</span>
+            </div>
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>electric_bolt</i> Electricity Cost:</div><span class="bold" id="resultElectricity">RM 0.00</span>
+            </div>
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>build</i> Machine Wear Cost:</div><span class="bold" id="resultMachineWear">RM 0.00</span>
+            </div>
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>person</i> Labor Cost:</div><span class="bold" id="resultLabor">RM 0.00</span>
+            </div>
+
+            <hr style="margin-block: 1.25rem; background-color: var(--primary);">
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>calculate</i> Total Production Cost:</div><span class="bold" id="resultTotalCost">RM 0.00</span>
+            </div>
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>warning</i> Failure Buffer:</div><span class="bold" id="resultFailureBuffer">RM 0.00</span>
+            </div>
+
+            <hr style="margin-block: 1.25rem; background-color: var(--primary);">
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 0.5rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center;"><i>attach_money</i> Profit:</div><span class="bold" id="resultProfit">RM 0.00</span>
+            </div>
+
+            <div class="row" style="font-size: 1rem; margin-block-start: 1.25rem;">
+                <div class="max" style="display: flex; gap: 0.5rem; align-items: center; font-size: 1.25rem;"><i>account_balance_wallet</i> Final Price:</div><span class="bold" id="resultFinalPrice" style=" font-size: 1.25rem;">RM 0.00</span>
+            </div>
+
+            <button style="margin-block-start:1.25rem;" onclick="printSummary()" class="primary extra small-elevate"><i>print</i> Print Summary</button>
+        </article>
+
+<pre class="s12" id="disclaimer"><strong>Disclaimer:</strong> This is an approximate estimation only. Actual costs may vary due to material wastage, post-processing, and other factors.</pre>
+
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+
+
+</html>

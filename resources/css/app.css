@@ -218,3 +218,28 @@
         }
     }
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: oklch(84.97% 0.242 146.40 / 0.4);
+    border-radius: 9999px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: oklch(84.97% 0.242 146.40 / 0.8);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(84.97% 0.242 146.40 / 0.4) transparent;
+}

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/muham/.claude/projects/c--Users-muham-Desktop-portfolio/**)",
+      "Bash(python3 skills/ui-ux-pro-max/scripts/search.py \"dark minimal portfolio developer personal brand\" --design-system -p \"Usoppii\" -f markdown)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"button hierarchy primary secondary CTA\" --domain ux -n 5)",
+      "Bash(py .claude/skills/ui-ux-pro-max/scripts/search.py \"button hierarchy primary secondary CTA\" --domain ux -n 5)",
+      "Bash(py .claude/skills/ui-ux-pro-max/scripts/search.py \"primary secondary button visual weight CTA action\" --domain ux -n 5)",
+      "Bash(php artisan *)",
+      "Bash(vendor/bin/pint --dirty --format agent)",
+      "Bash(python \"c:\\\\Users\\\\muham\\\\Desktop\\\\portfolio\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"dark portfolio developer personal branding minimal\" --design-system -f markdown)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\muham\\.claude\\projects\\c--Users-muham-Desktop-portfolio\\memory"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+body.dark {
+    --primary: #9ecaff;
+    --on-primary: #003258;
+    --primary-container: #00497d;
+    --on-primary-container: #d1e4ff;
+    --secondary: #bbc7db;
+    --on-secondary: #253140;
+    --secondary-container: #3b4858;
+    --on-secondary-container: #d7e3f7;
+    --tertiary: #d6bee4;
+    --on-tertiary: #3b2948;
+    --tertiary-container: #523f5f;
+    --on-tertiary-container: #f2daff;
+    --error: #ffb4ab;
+    --on-error: #690005;
+    --error-container: #93000a;
+    --on-error-container: #ffb4ab;
+    --background: #1a1c1e;
+    --on-background: #e2e2e6;
+    --surface: #121316;
+    --on-surface: #e2e2e6;
+    --surface-variant: #43474e;
+    --on-surface-variant: #c3c7cf;
+    --outline: #8d9199;
+    --outline-variant: #43474e;
+    --shadow: #000000;
+    --scrim: #000000;
+    --inverse-surface: #e2e2e6;
+    --inverse-on-surface: #2f3033;
+    --inverse-primary: #0061a4;
+    --surface-dim: #121316;
+    --surface-bright: #38393c;
+    --surface-container-lowest: #0d0e11;
+    --surface-container-low: #1a1c1e;
+    --surface-container: #1e2022;
+    --surface-container-high: #282a2d;
+    --surface-container-highest: #333538;
+}
+
+@media print {
+    body {
+        background: white !important;
+        color: #1a1a1a !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 2. Hide ALL UI elements except the summary */
+    header, 
+    pre, 
+    #projDetails, 
+    #projFilament, 
+    #projElec, 
+    #projLabor, 
+    #disclaimer, 
+    button {
+        display: none !important;
+    }
+
+    /* 3. Style the summary container */
+    #costSummary {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        border: 1px solid #eee !important;
+        padding: 20px !important;
+        box-shadow: none !important;
+        background: white !important;
+        color: #1a1a1a !important;
+    }
+
+    /* 4. Force text visibility (Overrides Beer CSS dark mode) */
+    #costSummary * {
+        color: #1a1a1a !important;
+        background-color: transparent !important;
+    }
+
+    /* 5. Handle Material Icons so they don't just show text */
+    #costSummary i {
+        font-family: 'Material Symbols Outlined', 'Material Icons' !important;
+        color: #444 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* 6. Fix Horizontal Rules */
+    #costSummary hr {
+        border: 0;
+        border-top: 1px solid #1a1a1a !important;
+        margin: 15px 0;
+        opacity: 1;
+    }
+
+    /* 7. Highlight the Final Price for the customer */
+    #resultFinalPrice {
+        font-size: 1.5rem !important;
+        border-bottom: 2px solid #1a1a1a;
+    }
+
+    /* 8. Page Settings */
+    @page {
+        margin: 1cm;
+        size: A4;
+    }
+}
